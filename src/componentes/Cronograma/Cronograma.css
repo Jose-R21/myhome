@@ -1,0 +1,15 @@
+.activo{
+  background: #68c957;
+}
+.enproceso{
+  background: #3cc9ff;
+}
+.cerrado{
+  background:#4d8cff;
+  text-decoration: line-through;
+}
+.cr{
+  margin-top: 5px;
+  text-align: justify;
+  padding: 5px;
+}

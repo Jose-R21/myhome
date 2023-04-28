@@ -1,0 +1,29 @@
+.offcanvas-header{
+  background-color: #00b6df;
+}
+.d-grid{
+  display: grid;
+}
+.border-r{
+  border-radius: 0px;
+}
+
+.lbl-nota::before{
+  content: "Notas";
+
+}
+
+.lbl-cronograma:before{
+  content: "Cronograma";
+}
+
+@media (max-width: 600px){
+  .lbl-nota::before{
+    content: "N";
+  
+  }
+  
+  .lbl-cronograma:before{
+    content: "C";
+  }
+}
