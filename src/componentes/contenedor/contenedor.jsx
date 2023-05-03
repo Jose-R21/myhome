@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom/client'
 import {BrowserRouter, Route, Routes } from 'react-router-dom';
 import FormNota from '../Notas/FormNota';
 import ListaCheks from '../Checks/ListaCheck';
+import Calculadora from '../Calculadora/Calculadora';
+
 
 
 
@@ -15,7 +17,8 @@ const Contenedor = () => {
 
       <Routes>
         <Route path='/' Component={ListaCheks} ></Route>
-        <Route path='/agenda/' Component={ListaCheks} ></Route>
+        <Route path='/myhome/' Component={ListaCheks} ></Route>
+        <Route path='/myhome/calculadora' Component={Calculadora} ></Route>
         <Route path='/new-nota/' Component={FormNota} ></Route>
         <Route path='/update/:id/' Component={FormNota} ></Route>
         

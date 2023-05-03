@@ -1,0 +1,19 @@
+img{
+  width: 80%;
+  height: auto;
+}
+
+@media (max-width: 600px) {
+
+  .m600-block{
+    display: block!important;
+  }
+  img{
+    width: 30%;
+    height: auto;
+  }
+  .w-50{
+    width: 80%!important;
+  }
+  
+}

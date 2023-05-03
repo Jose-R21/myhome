@@ -22,12 +22,12 @@ const NavBar = () => {
           <ul className="navbar-nav ml-auto me-auto ul-princ">
             <div className="collapse navbar-collapse">
             <li className="nav-item">
-                <Link className="nav-link active" to="/">Inicio
+                <Link className="nav-link active" to="/myhome">Inicio
                   <span className="visually-hidden">(current)</span>
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link active" to="/calculadora">Calculadora
+                <Link className="nav-link active" to="/myhome/calculadora">Calculadora
                   <span className="visually-hidden">(current)</span>
                 </Link>
               </li>
