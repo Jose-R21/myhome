@@ -4,11 +4,12 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import './NavBar.css'
 
+
 const NavBar = () => {
 
   
 
-  const img = <img className='img-prof' src="../src/assets/perro.jpg" />
+  const img = <img className='img-prof' src="./assets/perro.jpg" />
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark" >
       <div className="container-fluid" >
