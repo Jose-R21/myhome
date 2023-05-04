@@ -2,6 +2,9 @@ img{
   width: 80%;
   height: auto;
 }
+.sh-cd{
+  box-shadow: 0px -1px 5px 5px #d77009;
+}
 
 @media (max-width: 600px) {
 
@@ -13,7 +16,7 @@ img{
     height: auto;
   }
   .w-50{
-    width: 80%!important;
+    width: 100%!important;
   }
   
 }

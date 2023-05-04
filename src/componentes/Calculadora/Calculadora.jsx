@@ -98,7 +98,7 @@ const Calculadora = () => {
   return (
     <div className="container d-flex justify-content-center align-items-center">
       <div className="row w-50 align-items-top">
-        <div className="card">
+        <div className="card sh-cd">
           <div className="card-body m-1 ">
             <div className="row mb-5">
               <div className="p-2 m-2 d-flex justify-content-around m600-block">
@@ -137,7 +137,7 @@ const Calculadora = () => {
                   <div className="text-center ">Nivel</div>
                   <input
                   className="form-control"
-                    type="text"
+                    type="number"
                     placeholder="nivel"
                     name="nivel"
                     value={nivel}
