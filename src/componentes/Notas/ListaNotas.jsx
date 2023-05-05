@@ -7,6 +7,7 @@ const ListaVideos = (props) => {
     
     props.cargarNotas();
   });
+
   return (
 
     <div className="d-flex flex-wrap">

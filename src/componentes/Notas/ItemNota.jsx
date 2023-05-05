@@ -16,7 +16,6 @@ const navigate = useNavigate()
   }
 
 
-
   
 
   return (
@@ -35,7 +34,7 @@ const navigate = useNavigate()
             type="button"
             className="btn "
             style={{ display: "contents" }}
-            onClick={async () => {await navigate(`/update/${nota._id}`, closeoffcanvas()) }  }
+            onClick={async () => {await navigate(`/update/nota/${nota._id}`, closeoffcanvas()) }  }
           >
             <i className="bi bi-three-dots"></i>
           </button>

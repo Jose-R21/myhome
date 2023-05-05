@@ -39,6 +39,7 @@ const NavBar = () => {
                   <span className="visually-hidden">(current)</span>
                 </Link>
               </li>
+              
             </ul>
           </div>
           <div className="collapse ml-auto navbar-collapse justify-content-end">

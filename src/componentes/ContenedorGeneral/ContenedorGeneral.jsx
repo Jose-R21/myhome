@@ -12,6 +12,8 @@ import ListaNotas from "../Notas/ListaNotas";
 import { evaluate } from "mathjs";
 import * as NotaServicio from "../Notas/NotaServicio";
 import Cronograma from "../Cronograma/Cronograma";
+import * as CronogramaServicio from "../Cronograma/CronogramaServicio";
+import { ModalFormCronograma } from "../modals/ModalFormCronograma";
 
 var fecha = new Date();
 var year = fecha.getFullYear();
@@ -22,15 +24,13 @@ const ContenedorGeneral = () => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const [cronograma, setCronograma] = useState(false);
+  const [offcanvascronograma, setOffcanvasCronograma] = useState(false);
 
-  const cronogramaClose = () => setCronograma(false);
-  const cronogramacaShow = () => setCronograma(true);
-
-  const [lista, setLista] = useState(" ");
-
+  const cronogramaClose = () => setOffcanvasCronograma(false);
+  const cronogramacaShow = () => setOffcanvasCronograma(true);
 
   const [notas, setNotas] = useState([]);
+  const [cronogramas, setCronogramas] = useState([]);
 
   const cargarNotas = async () => {
     const res = await NotaServicio.tomarNotas();
@@ -46,6 +46,26 @@ const ContenedorGeneral = () => {
       .sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime());
 
     setNotas(ordenNota);
+  };
+
+  const cargarCronograma = async () => {
+    const res = await CronogramaServicio.tomarCronogramas();
+
+    const ordenCronograma = res.data
+      .map((cronograma) => {
+        return {
+          ...cronograma,
+          createdAt: cronograma.createdAt
+            ? new Date(cronograma.createdAt)
+            : new Date(),
+          updatedAt: cronograma.updatedAt
+            ? new Date(cronograma.updatedAt)
+            : new Date(),
+        };
+      })
+      .sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime());
+
+    setCronogramas(ordenCronograma);
   };
 
   return (
@@ -72,26 +92,32 @@ const ContenedorGeneral = () => {
       </div>
 
       <Offcanvas show={show} onHide={handleClose}>
-          <Offcanvas.Header closeButton>
-            <Offcanvas.Title></Offcanvas.Title>
-            <ModalFormNota cargarNotas={cargarNotas}></ModalFormNota>
-          </Offcanvas.Header>
-          <Offcanvas.Body>
-            <ListaNotas
-              notas={notas}
-              cargarNotas={cargarNotas}
-              closeoffcanvas={handleClose}
-              openoffcanvas={handleShow}
-            ></ListaNotas>
-          </Offcanvas.Body>
+        <Offcanvas.Header closeButton>
+          <Offcanvas.Title></Offcanvas.Title>
+          <ModalFormNota cargarNotas={cargarNotas}></ModalFormNota>
+        </Offcanvas.Header>
+        <Offcanvas.Body>
+          <ListaNotas
+            notas={notas}
+            cargarNotas={cargarNotas}
+            closeoffcanvas={handleClose}
+            openoffcanvas={handleShow}
+          ></ListaNotas>
+        </Offcanvas.Body>
       </Offcanvas>
-      <Offcanvas show={cronograma} onHide={cronogramaClose}>
-          <Offcanvas.Header closeButton>
-            <Offcanvas.Title></Offcanvas.Title>
-          </Offcanvas.Header>
-          <Offcanvas.Body>
-                <Cronograma></Cronograma>
-          </Offcanvas.Body>
+      <Offcanvas show={offcanvascronograma} onHide={cronogramaClose}>
+        <Offcanvas.Header closeButton>
+          <Offcanvas.Title></Offcanvas.Title>
+          <ModalFormCronograma cargarCronograma={cargarCronograma}></ModalFormCronograma>
+        </Offcanvas.Header>
+        <Offcanvas.Body>
+          <Cronograma
+            cronogramas={cronogramas}
+            cargarCronograma={cargarCronograma}
+            closeoffcanvas={cronogramaClose}
+            openoffcanvas={cronogramacaShow}
+          ></Cronograma>
+        </Offcanvas.Body>
       </Offcanvas>
       <Contenedor></Contenedor>
     </>
