@@ -11,9 +11,12 @@ const NavBar = () => {
     <>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <div className="container-fluid">
-          <a className="navbar-brand" href="#">
-            My Home
-          </a>
+         
+          <Link className="navbar-brand" to="/myhome/">
+                  My Home
+                  <span className="visually-hidden">(current)</span>
+                </Link>
+          
           <button
             className="navbar-toggler collapsed"
             type="button"
@@ -28,10 +31,7 @@ const NavBar = () => {
           <div className="navbar-collapse collapse" id="navbarColor02">
             <ul className="navbar-nav me-auto">
               <li className="nav-item">
-                <Link className="nav-link active" to="/myhome">
-                  Inicio
-                  <span className="visually-hidden">(current)</span>
-                </Link>
+                
               </li>
               <li className="nav-item">
                 <Link className="nav-link active" to="/myhome/calculadora">

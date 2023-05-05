@@ -127,7 +127,7 @@ const Calculadora = () => {
                       <option value="80-espinaca">Espinaca - C5 - N/A</option>
                     </select>
                     </div>
-                    <div className="border-solid d-flex justify-content-center">
+                    <div className="border-solid d-flex justify-content-center border">
                     {imgNabo ? imgNabo : <> </>}
                     </div>
                   </div>
