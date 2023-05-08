@@ -60,8 +60,8 @@ const ItemCronograma = ({ cronograma, cargarCronograma, fecha, closeoffcanvas })
 
           <label className={`text-capitalize`}>Estado : <span className={`${estado != 'cerrado' ? <></>: 'text-danger'}`}>{estado}</span></label><br />
           <label className={estado != 'enproceso' ? 'text-decoration-line-through': <></>}>{'Fecha de Entrega : '+ fechaEntregaDia+'-'+fechaEntregaMes}</label><br />
-          <label className={estado != 'activo'? 'text-decoration-line-through' : <></>}>{'Fecha de inicio: '+fechaInicioDia+'-'+fechaInicioMes }</label><br />
-          <label className={estado != 'activo'? 'text-decoration-line-through' : <></>}>{'Fecha de Fin: '+fechaFinDia+'-'+fechaFinMes }</label>
+          <label className={estado == 'activo' || estado == 'enproceso' ? <></> : 'text-decoration-line-through'}>{'Fecha de inicio: '+fechaInicioDia+'-'+fechaInicioMes }</label><br />
+          <label className={estado == 'activo' || estado == 'enproceso' ? <></> : 'text-decoration-line-through'}>{'Fecha de Fin: '+fechaFinDia+'-'+fechaFinMes }</label>
         </div>
 
       </div>
