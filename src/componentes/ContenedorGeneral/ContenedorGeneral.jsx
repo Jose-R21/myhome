@@ -56,10 +56,10 @@ const ContenedorGeneral = () => {
         return {
           ...cronograma,
           createdAt: cronograma.createdAt
-            ? new Date(cronograma.createdAt)
+            ? new Date(cronograma.fechafin)
             : new Date(),
           updatedAt: cronograma.updatedAt
-            ? new Date(cronograma.updatedAt)
+            ? new Date()
             : new Date(),
         };
       })
@@ -67,6 +67,7 @@ const ContenedorGeneral = () => {
 
     setCronogramas(ordenCronograma);
   };
+  
 
   return (
     <>
@@ -109,6 +110,8 @@ const ContenedorGeneral = () => {
         <Offcanvas.Header closeButton>
           <Offcanvas.Title></Offcanvas.Title>
           <ModalFormCronograma cargarCronograma={cargarCronograma}></ModalFormCronograma>
+         
+          
         </Offcanvas.Header>
         <Offcanvas.Body>
           <Cronograma

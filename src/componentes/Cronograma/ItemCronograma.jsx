@@ -32,18 +32,36 @@ const ItemCronograma = ({ cronograma, cargarCronograma, fecha, closeoffcanvas })
   const fechaFinDia = fechaFinrow[2];
   const fechaFinMes = fechaFinrow[1];
   
-
+  if(Number(fecha[1])  < Number(fechaEntregaDia) && Number(fecha[0]) <= Number(fechaEntregaMes)){
+      var estado = 'enproceso'
+  }else{
+    if(Number(fecha[0]) > Number(fechaFinMes)){
+      var estado = 'cerrado'
+    }else{
+      if(Number(fecha[1]) > Number(fechaFinDia)){
+        var estado = 'cerrado'
+      }else{
+        var estado = 'activo'
+      }
+    }
+    
+  }
+  
+ 
   return (
     <div className="nota">
       <div className="contenido-nota">
     
         <div
-          className={`cr p-1 ${Number(fecha[0])  < Number(fechaEntregaDia) && Number(fecha[1]) <= Number(fechaEntregaMes) ? 'enproceso' : Number(fecha[1]) > Number(fechaFinMes) ? 'cerrado' :  Number(fecha[0]) > Number(fechaFinDia)? `cerrado` : 'activo' }`}>
+          className={`cr p-1 ${estado}`}>
           
-          <b style={{ color: "red" }}>* </b>{cronograma.descripcion+'.'} <br />
-          <label>{'Fecha de Entrega : '+ fechaEntregaDia+'-'+fechaEntregaMes}</label><br />
-          <label>{'Fecha de inicio: '+fechaInicioDia+'-'+fechaInicioMes }</label><br />
-          <label>{'Fecha de Fin: '+fechaFinDia+'-'+fechaFinMes }</label>
+          <b style={{ color: "red" }}>* </b> <span className="text-uppercase">{cronograma.descripcion+'.'}</span>   <br />
+          
+
+          <label className={`text-capitalize`}>Estado : <span className={`${estado != 'cerrado' ? <></>: 'text-danger'}`}>{estado}</span></label><br />
+          <label className={estado != 'enproceso' ? 'text-decoration-line-through': <></>}>{'Fecha de Entrega : '+ fechaEntregaDia+'-'+fechaEntregaMes}</label><br />
+          <label className={estado != 'activo'? 'text-decoration-line-through' : <></>}>{'Fecha de inicio: '+fechaInicioDia+'-'+fechaInicioMes }</label><br />
+          <label className={estado != 'activo'? 'text-decoration-line-through' : <></>}>{'Fecha de Fin: '+fechaFinDia+'-'+fechaFinMes }</label>
         </div>
 
       </div>
