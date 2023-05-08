@@ -16,6 +16,10 @@
 .lbl-cronograma:before{
   content: "Cronograma";
 }
+.offcanvas-body{
+  background-image: url('../../assets/bg-amarillo.jpg');
+  background-size: contain;
+}
 
 @media (max-width: 600px){
   .lbl-nota::before{

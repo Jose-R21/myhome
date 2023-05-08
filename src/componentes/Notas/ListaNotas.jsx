@@ -3,10 +3,11 @@ import * as NotaServicio from "./NotaServicio";
 import ItemNota from "./ItemNota";
 
 const ListaVideos = (props) => {
+
+
   useEffect(() => {
-    
     props.cargarNotas();
-  });
+  }, [])
 
   return (
 

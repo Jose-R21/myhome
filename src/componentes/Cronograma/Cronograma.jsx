@@ -3,9 +3,10 @@ import "./Cronograma.css";
 import ItemCronograma from "./ItemCronograma";
 import { useEffect, useState } from "react";
 const Cronograma = ({ cargarCronograma, cronogramas, closeoffcanvas, openoffcanvas }) => {
+ 
   useEffect(() => {
     cargarCronograma();
-  });
+  }, [])
 
   const date = new Date();
 
