@@ -6,9 +6,9 @@ export const tomarChecks = ( async () => {
         
 })
 
-export const crearCheck= ( async (Cronograma) => {
+export const crearCheck= ( async (Check) => {
 
-    return await axios.post('http://localhost:2000/check', Cronograma)
+    return await axios.post('http://localhost:2000/check', Check)
 
 })
 

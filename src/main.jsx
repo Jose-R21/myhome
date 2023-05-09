@@ -18,7 +18,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <BrowserRouter>
       <NavBar></NavBar>
       <ContenedorGeneral></ContenedorGeneral>
-      <ToastContainer />
+      <ToastContainer limit={2}/>
       <footer className='d-flex flex-wrap justify-content-center align-items-center py-3 border-top bg-dark text-light'>
         <div className='text-center' id='ft'>@ {year} En desarrollo BrunoInc </div>
         

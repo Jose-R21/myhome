@@ -11,12 +11,11 @@ const NavBar = () => {
     <>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <div className="container-fluid">
-         
           <Link className="navbar-brand" to="/myhome/">
-                  My Home
-                  <span className="visually-hidden">(current)</span>
-                </Link>
-          
+            My Home
+            <span className="visually-hidden">(current)</span>
+          </Link>
+
           <button
             className="navbar-toggler collapsed"
             type="button"
@@ -30,25 +29,32 @@ const NavBar = () => {
           </button>
           <div className="navbar-collapse collapse" id="navbarColor02">
             <ul className="navbar-nav me-auto">
-              <li className="nav-item">
-                
-              </li>
+              <li className="nav-item"></li>
               <li className="nav-item">
                 <Link className="nav-link active" to="/myhome/calculadora">
                   Calculadora
                   <span className="visually-hidden">(current)</span>
                 </Link>
               </li>
-              
             </ul>
           </div>
           <div className="collapse ml-auto navbar-collapse justify-content-end">
-            <li className="dropdown navbar-light bg-dark">
-              <DropdownButton title={img}>
-                <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-                <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-                <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
-              </DropdownButton>
+            <li className="dropdown navbar-light bg-dark list-group-item">
+              <Dropdown>
+                <Dropdown.Toggle  id="dropdown-basic" bsPrefix="btn-my1">
+                  {img}
+                </Dropdown.Toggle>
+
+                <Dropdown.Menu>
+                  <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
+                  <Dropdown.Item href="#/action-2">
+                    Anothefffr action
+                  </Dropdown.Item>
+                  <Dropdown.Item href="#/action-3">
+                    Something else
+                  </Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
             </li>
           </div>
         </div>

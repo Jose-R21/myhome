@@ -1,22 +1,29 @@
 import React from "react";
 
-import * as NotaServicio from './NotaServicio'
+import * as NotaServicio from "./NotaServicio";
 import "./ItemNota.css";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
+const ItemNota = ({ nota, cargarNotas, closeoffcanvas, openoffcanvas }) => {
+  const navigate = useNavigate();
 
-
-const ItemNota = ({ nota, cargarNotas, closeoffcanvas, openoffcanvas}) => {
-
-const navigate = useNavigate()
-
-  const eliminarNota = async (id) =>{
+  const eliminarNota = async (id) => {
+    const tid = toast.loading("Eliminando...");
     await NotaServicio.eliminarNota(id)
-    cargarNotas();
-  }
-
-
-  
+      .then(async () => {
+        await cargarNotas();
+      })
+      .then(() => {
+        toast.update(tid, {
+          render: `Nota eliminada`,
+          type: "success",
+          isLoading: false,
+          autoClose: 1500,
+          closeOnClick: true,
+        });
+      });
+  };
 
   return (
     <div className="nota">
@@ -34,7 +41,9 @@ const navigate = useNavigate()
             type="button"
             className="btn "
             style={{ display: "contents" }}
-            onClick={async () => {await navigate(`/update/nota/${nota._id}`, closeoffcanvas()) }  }
+            onClick={async () => {
+              await navigate(`/update/nota/${nota._id}`, closeoffcanvas());
+            }}
           >
             <i className="bi bi-three-dots"></i>
           </button>

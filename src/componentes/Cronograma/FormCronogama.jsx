@@ -26,24 +26,34 @@ const FormCrograma = ({ cargarCronograma, close }) => {
     e.preventDefault();
 
     if (!params.id) {
+      const tid = toast.loading("Enviando...", {closeOnClick: true});
       await CronogramaServicio.crearCronograma(cronograma)
         .then(async () => {
-          await cargarCronograma;
+          await cargarCronograma();
         })
-        .then(close);
-      toast.success("Nuevo proyecto agregado al cronograma");
+        .then(() => {close(); 
+          toast.update(tid, {
+          render: `Nuevo proyecto añadido al cronograma `,
+          type: "success",
+          isLoading: false,
+          autoClose: 1500,
+          closeOnClick: true
+        }); });
+     // toast.success("");
 
       setCronograma(estadoInicial);
     } else {
-      await CronogramaServicio.ActulizarCronograma(params.id, cronograma).then(() => {
-        setTimeout(() => {
-          toast.success("Cronograma actulizado");
-          navigate('/myhome/')
-          
-        
-        }),
-          1000;
-      });
+      const tid = toast.loading("Enviando...", {closeOnClick: true});
+      await CronogramaServicio.ActulizarCronograma(params.id, cronograma).then( () => {
+        toast.update(tid, {
+          render: `Proyecto del cronograma actulizado`,
+          type: "success",
+          isLoading: false,
+          autoClose: 1500,
+          closeOnClick: true
+        });
+        navigate('/myhome/')
+      })
     }
   };
  

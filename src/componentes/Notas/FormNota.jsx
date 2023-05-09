@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 
 import * as NotaServicio from "./NotaServicio";
 
-const FormNota = ({ cargarNotas, close }) => {
+const FormNota = ({ cargarNotas, close}) => {
   const navigate = useNavigate();
   const params = useParams();
 
@@ -21,23 +21,33 @@ const FormNota = ({ cargarNotas, close }) => {
     e.preventDefault();
 
     if (!params.id) {
+      const tid = toast.loading("Enviando...", {closeOnClick: true});
       await NotaServicio.crearNota(nota)
         .then(async () => {
-          await cargarNotas;
+          await cargarNotas();
         })
-        .then(close);
-      toast.success("Nuevo video agregado");
+        .then(() => {close(); 
+          toast.update(tid, {
+          render: `Nueva nota añadida a la lista`,
+          type: "success",
+          isLoading: false,
+          autoClose: 1500,
+          closeOnClick: true
+        }); });
+     // toast.success("Nueva Nota agregado");
 
       setNota(estadoInicial);
     } else {
+      const tid = toast.loading("Actualizando...", {closeOnClick: true});
       await NotaServicio.ActulizarNota(params.id, nota).then(() => {
-        setTimeout(() => {
-          toast.success("Nota actulizado");
-          navigate('/')
-          openoffcanvas()
-        
-        }),
-          1000;
+        toast.update(tid, {
+          render: `Nota actualizada`,
+          type: "success",
+          isLoading: false,
+          autoClose: 1500,
+          closeOnClick: true
+        });
+        navigate('/myhome/')
       });
     }
   };

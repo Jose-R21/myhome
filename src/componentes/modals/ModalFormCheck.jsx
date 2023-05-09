@@ -2,10 +2,10 @@ import React from "react";
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import FormCrograma from "../Cronograma/FormCronogama";
+import FormCheck from '../Checks/FormCheck'
 
 
-export const ModalFormCheck = ({num}) => {
+export const ModalFormCheck = ({tipo, cargarCheck}) => {
 
   
   const [show, setShow] = useState(false);
@@ -13,21 +13,23 @@ export const ModalFormCheck = ({num}) => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
    
-
+  
 
   return (
     <div>
         <Button variant="primary" onClick={handleShow}>
-        Añadir check {num}
+        Añadir check {tipo[0].toUpperCase()+tipo.substring(1)}
       </Button>
     
       <Modal show={show} onHide={handleClose}  >
         <Modal.Header closeButton>
-          
+        <Modal.Title> <h5>Agregar Check {tipo[0].toUpperCase()+tipo.substring(1)}</h5></Modal.Title> 
         </Modal.Header>
+        
         <Modal.Body>
           
-          <FormCrograma  close={handleClose}></FormCrograma>
+          <FormCheck  close={handleClose} cargarCheck={cargarCheck} tipo={tipo}></FormCheck>
+          
         </Modal.Body>
         
       </Modal>

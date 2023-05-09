@@ -31,7 +31,7 @@ const Cronograma = ({ cargarCronograma, cronogramas, closeoffcanvas, openoffcanv
                     <ItemCronograma
                       cronograma={cronograma}
                       key={cronograma._id}
-                      cargarNotas={cargarCronograma}
+                      cargarCronograma={cargarCronograma}
                       fecha={fecha}
                       closeoffcanvas={closeoffcanvas}
                       openoffcanvas={openoffcanvas}

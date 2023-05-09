@@ -12,13 +12,22 @@
 }
 
 .img-prof{
-  width: 50px;
-  height: 50px;
+  width: 2.5rem;
+  height: 2.5rem;
   border-radius: 150px;
   border: solid 2px;
   color: var(--bs-body-color);
 }
-
-.dropdown-basic-button{
-  background-image: url("../src/assets/perro.jpg")!important;
+.btn-my1{
+  background-color: transparent;
+  border-color: transparent;
 }
+.btn-my1.show{
+  background-color: transparent;
+  border-color: transparent;
+}
+.btn-my1:hover{
+  border-color: transparent;
+  background-color: transparent;
+}
+

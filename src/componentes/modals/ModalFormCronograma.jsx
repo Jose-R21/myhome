@@ -18,7 +18,7 @@ export const ModalFormCronograma = ({cargarCronograma}) => {
   return (
     <div>
         <Button variant="primary" onClick={handleShow}>
-        Agregar Nota
+        Agregar Proyecto
       </Button>
     
       <Modal show={show} onHide={handleClose} animation={false} >
@@ -27,7 +27,7 @@ export const ModalFormCronograma = ({cargarCronograma}) => {
         </Modal.Header>
         <Modal.Body>
           
-          <FormCrograma cargarNotas={cargarCronograma} close={handleClose}></FormCrograma>
+          <FormCrograma cargarCronograma={cargarCronograma} close={handleClose}></FormCrograma>
         </Modal.Body>
         
       </Modal>
