@@ -68,7 +68,7 @@ const ContenedorGeneral = () => {
 
   return (
     <>
-      <div className="position-fixed" style={{ marginTop: "40vh" }}>
+      <div className="position-fixed z-1" style={{ marginTop: "40vh" }}>
         <div className="d-grid ">
           <Button
             variant="primary"
@@ -88,7 +88,7 @@ const ContenedorGeneral = () => {
           </Button>
         </div>
       </div>
-
+ 
       <Offcanvas show={show} onHide={handleClose}>
         <Offcanvas.Header closeButton>
           <Offcanvas.Title></Offcanvas.Title>
@@ -119,6 +119,7 @@ const ContenedorGeneral = () => {
           ></Cronograma>
         </Offcanvas.Body>
       </Offcanvas>
+
       <Contenedor></Contenedor>
     </>
   );

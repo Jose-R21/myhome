@@ -29,6 +29,10 @@ const ListaCheks = () => {
 
   return (
     <>
+    <div className="w-100 border border-dark rounded shadow p-4">
+      <div className="mb-3 mt-3 text-center">
+        <span className="h3">Lista de cheks</span>
+      </div>
       <div className="accordion w-100" id="accordionExample">
         <div className="accordion-item">
           <h2 className="accordion-header" id="headingOne">
@@ -45,7 +49,7 @@ const ListaCheks = () => {
           </h2>
           <div
             id="collapseOne"
-            className="accordion-collapse collapse show"
+            className="accordion-collapse collapse"
             aria-labelledby="headingOne"
             data-bs-parent="#accordionExample"
           >
@@ -124,6 +128,7 @@ const ListaCheks = () => {
           </div>
         </div>
       </div>
+    </div>
     </>
   );
 };

@@ -6,6 +6,7 @@ import FormCronograma from '../Cronograma/FormCronogama'
 import ListaCheks from '../Checks/ListaCheck';
 import Calculadora from '../Calculadora/Calculadora';
 import ContenedorUpdate from './ContenedorUpdate';
+import './Contenedor.css'
 
 
 
@@ -14,9 +15,9 @@ import ContenedorUpdate from './ContenedorUpdate';
 const Contenedor = () => {
     
   return(
-
-    <div className='container p-3 d-flex justify-content-center aling-items-center' style={{height: '100%', minHeight: '100vh', backgroundColor: '#fff'}}>
-
+    <>
+    <div className='container p-3 cnt' >
+        <div className='d-flex justify-content-center aling-items-center'>
       <Routes>
         <Route path='/' Component={ListaCheks} ></Route>
         <Route path='/myhome/' Component={ListaCheks} ></Route>
@@ -24,9 +25,13 @@ const Contenedor = () => {
         <Route path='/update/:tipo/:id' Component={ContenedorUpdate} ></Route>
         
       </Routes>
-      
       </div>
-
+      <div>
+        
+      </div>
+      </div>
+      
+      </>
   )
 }
 
