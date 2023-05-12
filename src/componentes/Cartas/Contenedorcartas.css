@@ -1,0 +1,37 @@
+.hw{
+ min-height: 30vw;
+ padding-bottom: 30px;
+}
+.contenedor-cartas{
+ 
+}
+.carta{
+  display: inline-block;
+  min-width: 100px;
+  max-width: 100px;
+  min-height: 150px;
+  max-height: 150px;
+  border: 1px solid black;
+
+}
+.contenedor-carta{
+  display: relative;
+}
+.fs{
+  font-size: 3rem;
+  top: 25%;
+  left: 35%;
+}
+
+@media (max-width: 600px){
+  .carta{
+    min-width: 60px;
+  max-width: 60px;
+  min-height: 90px;
+  max-height: 90px;
+  }
+  .fs{
+    font-size: 2rem;
+  }
+
+}

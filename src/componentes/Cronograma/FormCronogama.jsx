@@ -38,10 +38,16 @@ const FormCrograma = ({ cargarCronograma, close }) => {
           isLoading: false,
           autoClose: 1500,
           closeOnClick: true
+        }); setCronograma(estadoInicial); }).catch(error => { toast.update(tid, {
+          render: `Error: ${error.response.data.mensaje} `,
+          type: "error",
+          isLoading: false,
+          autoClose: 1500,
+          closeOnClick: true
         }); });
      // toast.success("");
 
-      setCronograma(estadoInicial);
+      
     } else {
       const tid = toast.loading("Enviando...", {closeOnClick: true});
       await CronogramaServicio.ActulizarCronograma(params.id, cronograma).then( () => {

@@ -97,14 +97,14 @@ const Calculadora = () => {
 
   return (
     <div className="container d-flex justify-content-center align-items-center">
-      <div className="row w-50 align-items-top">
+      <div className="row align-items-top wm-100">
         <div className="card sh-cd">
           <div className="card-body m-1 ">
             <div className="row mb-5">
               <div className="p-2 m-2 d-flex justify-content-around m600-block">
                 <div className="">
                   <div className="text-center">Cultivo</div>
-                  <div className="d-flex m600-block">
+                  <div className="dm">
                     <div className="w-100">
                     <select onChange={tomarTipo} className="w-100 form-control">
                     <option value="0-dog">--- Primavera ---</option>
@@ -158,7 +158,7 @@ const Calculadora = () => {
                 </div>
               </div>
               <div className="row d-flex justify-content-end mt-5">
-                <div className="w-50 ">
+                <div className="wm-100 ">
                   <div className="d-flex justify-content-end">
                     <div className="text-end w-100">
                       <span>Unidad: </span>
@@ -168,7 +168,7 @@ const Calculadora = () => {
                 </div>
               </div>
               <div className="row d-flex justify-content-end">
-                <div className="w-50 ">
+                <div className="wm-100 ">
                   <div className="d-flex justify-content-end">
                     <div className="text-end w-100">
                       <span>Campo 3x3:</span>

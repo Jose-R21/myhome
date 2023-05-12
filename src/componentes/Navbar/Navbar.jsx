@@ -36,6 +36,12 @@ const NavBar = () => {
                   <span className="visually-hidden">(current)</span>
                 </Link>
               </li>
+              <li className="nav-item">
+                <Link className="nav-link active" to="/myhome/cartas/">
+                  Cartas
+                  <span className="visually-hidden">(current)</span>
+                </Link>
+              </li>
             </ul>
           </div>
           <div className="collapse ml-auto navbar-collapse justify-content-end">

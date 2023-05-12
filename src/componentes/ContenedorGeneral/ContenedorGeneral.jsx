@@ -17,10 +17,8 @@ import { ModalFormCronograma } from "../modals/ModalFormCronograma";
 import OffcanvasUniforme from "../offcanvas/offcanvasUniforme";
 import C_azul from "../../assets/camisas/c-azul.png";
 import C_negro from "../../assets/camisas/c-negro.png";
-import {getAuth, signInAnonymously} from  'firebase/auth'
-import { getToken, onMessage  } from 'firebase/messaging';
-import {messaging} from '../../firebase'
 import { toast } from "react-toastify";
+import addNotification from 'react-push-notification';
 import './ContenedorGeneral.css'
 
 var fecha = new Date();
@@ -79,42 +77,6 @@ const ContenedorGeneral = () => {
     setCronogramas(ordenCronograma);
   };
 
-
-
-
-const loguear = () =>{
-  signInAnonymously(getAuth()).then((usuario) => {console.log(usuario.user.uid)}).catch(error => console.log('error al autenticar'))
-}
-const activarMensajes = async () => {
-  const token = await getToken(messaging, {vapidKey:'BCI614C0FAYu4jSi3xayvBMq1U9Z4hGMPV2x5j9a1xZEdvfIW7_D_MCPxnJOnGgeo2v6ctJ2KBWbzu7_HPrAaiE'}).catch(error => console.log('error en el token'))
-  
-  if(token) console.log('token:',token)
-  if(!token) console.log('error:',token)  
-}
-
-const noti = async () =>{
- await loguear()
-
- await  activarMensajes()
-
- 
-} 
-
-useEffect(()=>{
-  
-  onMessage(messaging, message => {
-  console.log('tu mensaje:',message)
-  toast(`Titulo: ${message.notification.title}`)
-  toast(`Body: ${message.notification.body}`)
-   })
-
-   setTimeout(() => {
-    noti()
-   }, 5000)
-
-   },[])
-
-
   const date = new Date();
   const dia = date.getDay();
   var color =
@@ -122,7 +84,10 @@ useEffect(()=>{
       ? "Negro"
       : dia == 2 || dia == 5
       ? "Azul"
-      : "azul/negro";
+      : "Azul/Negro";
+
+  var day = dia == 1 ? 'Lunes' : dia == 2 ? 'Martes' : dia == 3? 'Miercoles': dia == 4? 'Jueves' : 'Viernes';
+  var ImgCamisa = dia == 1 ? C_azul : dia == 2 ? C_negro : dia == 3? C_azul: dia == 4? C_negro : C_azul;
 
   const imgN = <img src={C_negro} className="imgC"/>;
   const imgA = <img src={C_azul} className="imgC"/>;
@@ -138,6 +103,61 @@ useEffect(()=>{
       </div>
     </div>
   );
+
+  const noti = () => {
+
+    const options = {
+      title: day,
+      message: `Hoy toca usar la camisa de color ${color == 'Azul' && day == 'Viernes'? `Azul/Negro`: color}`, //optional
+      theme: 'red', //optional, default: undefined
+     
+      backgroundTop: 'green', //optional, background color of top container.
+      backgroundBottom: 'darkgreen', //optional, background color of bottom container.
+      colorTop: 'green', //optional, font color of top container.
+      colorBottom: 'darkgreen', //optional, font color of bottom container.
+      closeButton: 'Go away', //optional, text or html/jsx element for close text. Default: Close,
+      native: true, //optional, makes the push notification a native OS notification
+      icon: ImgCamisa, // optional, Native only. Sets an icon for the notification.
+      vibrate: 1, // optional, Native only. Sets a vibration for the notification.
+      
+    }
+  
+    addNotification(options)
+  }
+
+  const [num , setNum] = useState(0)
+  const toastId = React.useRef(null);
+  
+  const notify = async () => {
+     await setNum(num + 1)
+    
+    if(! toast.isActive(toastId.current)) {
+      toastId.current = toast(`Hoy toca usar una camisa de color ${color}`, {
+        position: "top-right",
+        autoClose: false,
+        hideProgressBar: false,
+        closeOnClick: true,
+        
+        draggable: true,
+
+        theme: "light",
+        });
+        
+    }
+    
+    
+  }
+  const f = () => {
+      
+    setNum(num + 1)
+   
+  }
+
+  setInterval( () => {
+   // notify().then(console.log(num))
+     
+   }, 10000)
+  
 
   return (
     <>
@@ -161,8 +181,8 @@ useEffect(()=>{
               </div>
             </div>
           </div>
-          <button type="button" onClick={loguear} className="btn btn-primary me-2">L</button>
-          <button type="button" onClick={activarMensajes} className="btn btn-primary">M</button>
+          <button type="button" onClick={f} className="btn btn-primary me-2">L {num}</button>
+
         </div>
         
  
