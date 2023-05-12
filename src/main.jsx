@@ -8,7 +8,7 @@ import './index.css'
 import NavBar from './componentes/Navbar/Navbar';
 import ContenedorGeneral from './componentes/ContenedorGeneral/ContenedorGeneral';
 import 'react-toastify/dist/ReactToastify.css';
-import { Router } from 'react-router-dom';
+
 
 
 
