@@ -62,15 +62,15 @@ const ItemCronograma = ({
   }
 
   return (
-    <div className="nota">
+    <div className="nota shadow">
       <div className="contenido-nota">
-        <div className={`cr p-1 ${estado}`}>
+        <div className={`cr p-1 ${estado} rounded`}>
           <b style={{ color: "red" }}>* </b>{" "}
           <span className="text-uppercase">{cronograma.descripcion + "."}</span>{" "}
           <br />
           <label className={`text-capitalize`}>
             Estado :{" "}
-            <span className={`${estado != "cerrado" ? <></> : "text-danger"}`}>
+            <span className={`${estado == "cerrado" ? "text-danger" : estado == "activo"? "text-success" : "text-warning" }`}>
               {estado}
             </span>
           </label>
@@ -116,7 +116,7 @@ const ItemCronograma = ({
             style={{ display: "contents" }}
             onClick={async () => {
               await navigate(
-                `/update/cronograma/${cronograma._id}`,
+                `/myhome/update/cronograma/${cronograma._id}`,
                 closeoffcanvas()
               );
             }}

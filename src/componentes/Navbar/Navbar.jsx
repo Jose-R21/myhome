@@ -31,7 +31,7 @@ const NavBar = () => {
             <ul className="navbar-nav me-auto">
               <li className="nav-item"></li>
               <li className="nav-item">
-                <Link className="nav-link active" to="/myhome/calculadora">
+                <Link className="nav-link active" to="/myhome/calculadora/">
                   Calculadora
                   <span className="visually-hidden">(current)</span>
                 </Link>

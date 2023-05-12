@@ -16,9 +16,27 @@
 .lbl-cronograma:before{
   content: "Cronograma";
 }
+.lbl-uniforme:before{
+  content: "Uniforme";
+}
 .offcanvas-body{
   background-image: url('../../assets/bg-amarillo.jpg');
   background-size: contain;
+}
+.z-ofc{
+  z-index: 4;
+}
+.imgC{
+  width: 2.8rem;
+  height: auto;
+}
+.imgNAA{
+  width: 2.8rem;
+  height: auto;
+}
+.imgNAN{
+  width: 3rem;
+  height: auto;
 }
 
 @media (max-width: 600px){
@@ -30,4 +48,25 @@
   .lbl-cronograma:before{
     content: "C";
   }
+  .lbl-uniforme:before{
+    content: "U";
+  }
+  .z-ofc{
+    width: 10%;
+    font-size: 0.8rem;
+  }
+
+  .imgNAA{
+    width: 30px;
+    height: auto;
+  }
+  .imgNAN{
+    width: 30px;
+    height: auto;
+  }
+  .ds{
+    display: none;
+  }
+
+
 }

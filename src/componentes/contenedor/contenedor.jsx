@@ -16,13 +16,13 @@ const Contenedor = () => {
     
   return(
     <>
-    <div className='container p-3 cnt' >
+    <div className='container p-3 cnt '>
         <div className='d-flex justify-content-center aling-items-center'>
       <Routes>
         <Route path='/' Component={ListaCheks} ></Route>
         <Route path='/myhome/' Component={ListaCheks} ></Route>
-        <Route path='/myhome/calculadora' Component={Calculadora} ></Route>
-        <Route path='/update/:tipo/:id' Component={ContenedorUpdate} ></Route>
+        <Route path='/myhome/calculadora/' Component={Calculadora} ></Route>
+        <Route path='/myhome/update/:tipo/:id' Component={ContenedorUpdate} ></Route>
         
       </Routes>
       </div>

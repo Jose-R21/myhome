@@ -26,7 +26,7 @@ const ItemNota = ({ nota, cargarNotas, closeoffcanvas, openoffcanvas }) => {
   };
 
   return (
-    <div className="nota">
+    <div className="nota shadow">
       <div className="contenido-nota">
         <b>
           <p>
@@ -42,7 +42,7 @@ const ItemNota = ({ nota, cargarNotas, closeoffcanvas, openoffcanvas }) => {
             className="btn "
             style={{ display: "contents" }}
             onClick={async () => {
-              await navigate(`/update/nota/${nota._id}`, closeoffcanvas());
+              await navigate(`/myhome/update/nota/${nota._id}`, closeoffcanvas());
             }}
           >
             <i className="bi bi-three-dots"></i>
