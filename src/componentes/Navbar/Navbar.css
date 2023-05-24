@@ -30,4 +30,31 @@
   border-color: transparent;
   background-color: transparent;
 }
+.dr-login{
+  width: 250px;
+  border: 1px solid black!important;
+ 
+}
+.nav-item-login{
+  display: none!important;
+}
+.nav-mob-login{
+  display: flex;
+}
+.chat{
+  background-color: #3cb361!important;
+}
+@media (max-width: 600px){
+  .nav-mob{
+      width: 75%!important;
+      display: flex;
+  }
+  
+  .nav-item-login{
+    display: flex!important;
+  }
+  .nav-mob-login{
+    display: none;
+  }
+}
 

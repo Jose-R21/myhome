@@ -1,0 +1,43 @@
+.bg-yo{
+  background-color: #ff9898;
+}
+.h-chat{
+  height: 95%;
+}
+.h-cont-g{
+  min-height: 80%;
+  max-height: 80%;
+}
+#span-x{
+  max-height: 5%;
+  min-height: 5%;
+}
+#cont-input{
+  max-height: 15%;
+  min-height: 15%;
+}
+.h-cont-s{
+  height: 90%;
+}
+.div-users{
+  height: 30px;
+  border:solid 1px black;
+  margin-bottom: 5px;
+}
+.cont-users{
+  height: 100vh;
+}
+.span-chat{
+  height:auto;
+min-width:50%;
+word-wrap: break-word;
+}
+.cont-login-chat{
+  margin-top: 5%;
+  height: 500px;
+  width: 500px;
+  background-color: #f5f5f5c6;
+ 
+  
+ 
+}

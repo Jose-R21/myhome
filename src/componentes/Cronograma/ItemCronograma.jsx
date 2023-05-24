@@ -50,24 +50,36 @@ const ItemCronograma = ({
   ) {
     var estado = "enproceso";
   } else {
-    if (Number(fecha[0]) > Number(fechaFinMes)) {
-      var estado = "cerrado";
-    } else {
-      if (Number(fecha[1]) > Number(fechaFinDia)) {
+    if( Number(fecha[1]) > Number(fechaEntregaDia) &&
+        Number(fecha[0]) < Number(fechaEntregaMes)){
+          var estado = "enproceso";
+    }else{
+      if (Number(fecha[0]) > Number(fechaFinMes)) {
         var estado = "cerrado";
       } else {
-        var estado = "activo";
+        if (Number(fecha[1]) > Number(fechaFinDia)) {
+          var estado = "cerrado";
+        } else {
+          var estado = "activo";
+        }
       }
+
     }
+
+
+
+    
   }
 
   return (
     <div className="nota shadow">
       <div className="contenido-nota">
         <div className={`cr p-1 ${estado} rounded`}>
+          <label>
           <b style={{ color: "red" }}>* </b>{" "}
-          <span className="text-uppercase">{cronograma.descripcion + "."}</span>{" "}
+          <span className="text-uppercase">{cronograma.descripcion + "."}</span>
           <br />
+          </label>
           <label className={`text-capitalize`}>
             Estado :{" "}
             <span className={`${estado == "cerrado" ? "text-danger" : estado == "activo"? "text-success" : "text-warning" }`}>
@@ -77,7 +89,7 @@ const ItemCronograma = ({
           <br />
           <label
             className={
-              estado != "enproceso" ? "text-decoration-line-through" : <></>
+              estado != "enproceso" ? "text-decoration-line-through" : ''
             }
           >
             {"Fecha de Entrega : " + fechaEntregaDia + "-" + fechaEntregaMes}
@@ -86,7 +98,7 @@ const ItemCronograma = ({
           <label
             className={
               estado == "activo" || estado == "enproceso" ? (
-                <></>
+                ''
               ) : (
                 "text-decoration-line-through"
               )
@@ -98,7 +110,7 @@ const ItemCronograma = ({
           <label
             className={
               estado == "activo" || estado == "enproceso" ? (
-                <></>
+                ''
               ) : (
                 "text-decoration-line-through"
               )

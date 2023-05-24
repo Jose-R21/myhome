@@ -3,6 +3,7 @@ import Select from "react-select";
 import { useState } from "react";
 import { evaluate } from "mathjs";
 import "./Calculadora.css";
+import { useLocation } from "react-router-dom";
 
 import batata from "../../assets/cultivos/batata.webp";
 import berenjena from "../../assets/cultivos/berenjena.webp";
@@ -21,7 +22,7 @@ import tomate from "../../assets/cultivos/tomate.webp";
 import zanahoria from "../../assets/cultivos/zanahoria.webp";
 import dog from "../../assets/cultivos/dog.png";
 
-const Calculadora = () => {
+const Calculadora = ({cont}) => {
   const [tipo, setTipo] = useState("0");
   const [nivel, setNivel] = useState("1");
   const [valor, setValor] = useState("0");
@@ -91,12 +92,14 @@ const Calculadora = () => {
   if (img == "dog") {
     var imgNabo = <img src={dog} alt="dog" />;
   }
-
+  
+  let { state } = useLocation()
 
   /*imagenes */
 
   return (
-    <div className="container d-flex justify-content-center align-items-center">
+    <div className="container d-flex justify-content-center align-items-center pt-5">
+    
       <div className="row align-items-top wm-100">
         <div className="card sh-cd">
           <div className="card-body m-1 ">
@@ -177,9 +180,12 @@ const Calculadora = () => {
                       {" "}
                       {valor ? evaluate(valor + "*9") : <></>}
                     </div>
+                      
                   </div>
                 </div>
               </div>
+              <span>--/{cont}/--</span>
+              {state  ? (<span>--/ {state.num} /--</span> ): <></>}
             </div>
           </div>
         </div>

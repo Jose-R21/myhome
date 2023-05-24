@@ -1,0 +1,9 @@
+.img-prof-login{
+  
+    width: 4.5rem;
+    height: 4.5rem;
+    border-radius: 150px;
+    border: solid 2px;
+    color: var(--bs-body-color);
+  
+}

@@ -19,8 +19,14 @@
 }
 .fs{
   font-size: 3rem;
-  top: 25%;
-  left: 35%;
+  width: 100%;
+  height: 100%;
+}
+.mg-s{
+  margin-right: 5px;
+}
+.mg-i{
+  margin-left: 5px;
 }
 
 @media (max-width: 600px){
