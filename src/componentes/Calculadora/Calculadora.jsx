@@ -4,7 +4,7 @@ import { useState } from "react";
 import { evaluate } from "mathjs";
 import "./Calculadora.css";
 import { useLocation } from "react-router-dom";
-
+import { Link } from "react-router-dom";
 import batata from "../../assets/cultivos/batata.webp";
 import berenjena from "../../assets/cultivos/berenjena.webp";
 import calabaza from "../../assets/cultivos/calabaza.webp";
@@ -98,9 +98,23 @@ const Calculadora = ({cont}) => {
   /*imagenes */
 
   return (
-    <div className="container d-flex justify-content-center align-items-center pt-5">
-    
-      <div className="row align-items-top wm-100">
+    <>
+    <div className="top-bar1 pb-2 ps-4 pt-4">
+        <div className="d-flex ">
+        <Link to={'/myhome/'} className="link-map text-light hover-text-orange">Home</Link> 
+        <i class="bi bi-chevron-compact-right"></i>
+          <Link to={'/myhome/calculadora/'} className="link-map text-light hover-text-orange">Calculadora</Link> 
+          <i class="bi bi-chevron-compact-right"></i>
+
+        </div>
+        <div className="mt-3 text-orange">
+        <span className="h2">Calculadora</span>
+      </div>
+      </div>
+
+    <div className="container cont-100vh  pt-5 bg-dark-p ">
+      <div className="w-100 bg-dark-p  d-flex justify-content-center align-items-top">
+      <div className="row align-items-top wm-100 text-dark">
         <div className="card sh-cd">
           <div className="card-body m-1 ">
             <div className="row mb-5">
@@ -190,7 +204,9 @@ const Calculadora = ({cont}) => {
           </div>
         </div>
       </div>
+      </div>
     </div>
+    </>
   );
 };
 

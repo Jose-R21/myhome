@@ -1,13 +1,13 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, redirect } from "react-router-dom";
 import "./Login.css";
 import axios from "axios";
 import Cookie from "universal-cookie";
 import md5 from "md5";
 import perro from "../../assets/perro.jpg";
-import io from "socket.io-client";
+
 
 const Login = ({login, actuLogin}) => {
   const [usuario, setUsuario] = useState("");
@@ -15,6 +15,7 @@ const Login = ({login, actuLogin}) => {
   
 
   const navigate = useNavigate();
+  
 
   const datosLogin = {
     usuario: usuario.toLocaleLowerCase(),
@@ -41,20 +42,24 @@ const Login = ({login, actuLogin}) => {
         if (res.data != null) {
           var nombre =
             res.data.usuario[0].toUpperCase() + res.data.usuario.slice(1);
-          toast(`Bienvenido ${nombre}`, { type: "success", autoClose: 1000, hideProgressBar: true });
+            toast(`Bienvenido ${nombre}`, { type: "success", autoClose: 1000, hideProgressBar: true });
           var datos = res.data;
 
           cookie.set("id", datos._id, { path: "/" });
           cookie.set("usuario", nombre, { path: "/" });
-          cookie.set("nivel", datos.nivel, { path: "/" });
+          
 
           setUsuario("");
           setClave("");
-
+          
           tomarUserCookie();
 
           
+          
           cerrarDropdown()
+         
+         
+          
         } else {
           toast("Usuario o Clave incorrecto", { type: "error" });
           
@@ -97,7 +102,10 @@ const Login = ({login, actuLogin}) => {
     cookie.remove("usuario", { path: "/" });
     cookie.remove("nivel", { path: "/" });
     cerrarDropdown()
-    navigate("/myhome/");
+    
+    navigate('/myhome/')
+    navigate(0)
+    
    
     actuLogin('')
   };
@@ -119,34 +127,16 @@ const Login = ({login, actuLogin}) => {
 
   }, [])
 
-  /* const num1 = [{id: 1, number: 1},{id: 2, number: 2},{id: 3, number: 3},{id: 4, number:4},]
-    const num2 = [{id: 1, number: 1},{id: 2, number: 2},{id: 4, number: 4},]
 
-    var num3 = []
-
-    for(var i = 0; i < num1.length; i++){
-      var igual = false
-      for(var j = 0; j < num2.length & igual == false; j++){
-        if(num1[i].id == num2[j].id && num1[i].number == num2[j].number){
-          igual=true
-        }else{
-          if(igual == false){
-            num3.push(num1[i])
-          }
-        }
-        
-      }
-    }
-    console.log(num3)*/
   if (login != '') {
     return (
       <>
-        <div className="container-lg w-100 h-100 p-2 ">
-          <div className="w-100 mx-auto">
-            <div className="mb-3 d-flex">
+        <div className="container-lg w-100 h-100 p-2 index-lg text-dark">
+          <div className="w-100 mx-auto index-lg ">
+            <div className="mb-3 d-flex index-lg ">
               <div><img className="img-prof-login" src={perro} /></div>
               <div className="ms-2">
-              <span className="fw-bold">{login.usuario}</span><br />
+              <span className="fw-bold text-dark">{login.usuario}</span><br />
               <span className="text-secondary">{login.id.substring(0,5)+'********'+login.id.slice(-5)}</span>
               </div>
               </div>
@@ -158,7 +148,7 @@ const Login = ({login, actuLogin}) => {
                 <button
                   type="button"
                   onClick={cerrarSesion}
-                  className="btn btn-secondary btn-sm"
+                  className="btn btn-danger btn-sm"
                 >
                   Cerrar Sesion
                 </button>
@@ -171,14 +161,19 @@ const Login = ({login, actuLogin}) => {
   } else {
     return (
       <>
-        <div className="container w-100 h-100 p-2 ">
+        <div className="container w-100 h-100 p-2 index-lg ">
+          <div className="text-center mb-3 ">
+            <div  className="rounded-pill w-75 mx-auto border border-orange" >
+            <span className="text-dark">Iniciar Sesion</span>
+            </div>
+          </div>
           <div className=" d-flex justify-content-center mx-auto  rounded">
             <form action="#" className="w-100  " onSubmit={tomarLogin}>
               <div className="w-100 d-flex justify-content-center">
                 <div className="d-flex justify-content-end mb-2">
                   <input
                     type="text"
-                    className="form-control border border-dark  "
+                    className="form-control border border-dark  hover-border-orange"
                     value={usuario}
                     name="usuario"
                     id="usuario"
@@ -192,7 +187,7 @@ const Login = ({login, actuLogin}) => {
                 <div className=" d-flex justify-content-end">
                   <input
                     type="password"
-                    className="form-control border border-dark "
+                    className="form-control border border-dark hover-border-orange"
                     value={clave}
                     name="clave"
                     id="clave"
@@ -201,7 +196,7 @@ const Login = ({login, actuLogin}) => {
                   />
                 </div>
               </div><div className="d-flex justify-content-center">
-              <button onClick={tomarLogin} className="btn btn-primary me-3">Login</button>
+              <button onClick={tomarLogin} className="btn bg-orange text-light me-3">Login in</button>
               
               
             </div>

@@ -7,12 +7,30 @@
 }
 .carta{
   display: inline-block;
+  width: 100px;
   min-width: 100px;
-  max-width: 100px;
+  height: 150px;
   min-height: 150px;
-  max-height: 150px;
-  border: 1px solid black;
+  
+  border: 1px solid rgb(0, 0, 0);
+  background-color: white;
+  color: black;
+  transition: .1s;
 
+}
+.carta:hover{
+  width: 105px;
+  height: 155px;
+  border: 2px solid red;
+  
+}
+.mesa-cartas{
+ background: radial-gradient(
+    
+    rgb(7, 90, 11) 80%,
+    rgb(7, 70, 7) 
+    
+  );
 }
 .contenedor-carta{
   display: relative;

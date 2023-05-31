@@ -1,6 +1,7 @@
 import React from "react";
 import "./Contenedorcartas.css";
 import { isInteger, number } from "mathjs";
+import { Link } from "react-router-dom";
 
 const JCartas = () => {
   const cartas = [
@@ -209,27 +210,41 @@ const JCartas = () => {
 
   return (
     <>
-      <div className="container d-flex justify-content-center align-items-center">
+    <div className="top-bar1 pb-2 ps-4 pt-4 ">
+        <div className="d-flex ">
+        <Link to={'/myhome/'} className="link-map text-light hover-text-orange">Home</Link> 
+        <i class="bi bi-chevron-compact-right"></i>
+          <Link to={'/myhome/calculadora/'} className="link-map text-light hover-text-orange">Cartas</Link> 
+          <i class="bi bi-chevron-compact-right"></i>
+
+        </div>
+        <div className="mt-3 text-orange">
+        <span className="h2">Cartas</span>
+      </div>
+      </div>
+      <div className="container d-flex justify-content-center align-items-center bg-dark-p cont-100vh">
         <div className="w-100">
           <div>
-            <div>
-              <button type="button" className="btn btn-primary">
-                cartas
-              </button>
-            </div>
+            
 
-            <div className="container border border-dark shadow hw mt-5 d-flex justify-content-center align-items-top">
+            <div className="container border border-white shadow hw mt-5 d-flex justify-content-center align-items-top mesa-cartas">
               <div className="mt-5 w-75 d-flex justify-content-center align-items-top">
-                <div id="contenedor-cartas">
+                <div id="contenedor-cartas p-1">
                   {cartas.map((carta) => {
                     return (
-                      <div className="me-4 carta position-relative" key={carta.id}>
+                      <div className="me-1 carta position-relative" key={carta.id}>
                         <div className="carta-header position-absolute top-0 end-0 mg-s">
                           <span>{carta.numero}</span>
                         </div>
                         <div className="carta-body position-absolute fs mg-c">
                           <div className="w-100 h-100 d-flex justify-content-center align-items-center">
-                          <span>
+                          <span className={carta.tipo === "ESPADA"
+                              ? "text-danger"
+                              : carta.tipo === "COPA"
+                              ? "text-dark"
+                              : carta.tipo === "ORO"
+                              ? "text-danger"
+                              : "text-dark"}>
                             {carta.tipo === "ESPADA"
                               ? "♦"
                               : carta.tipo === "COPA"

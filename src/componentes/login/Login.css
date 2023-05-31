@@ -7,3 +7,9 @@
     color: var(--bs-body-color);
   
 }
+@media (max-width: 600px){
+    input.form-control.form-control-sm.w-25.text-center {
+        display: none;
+    }
+}
+

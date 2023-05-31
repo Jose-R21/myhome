@@ -5,6 +5,9 @@ import Offcanvas from "react-bootstrap/Offcanvas";
 import Cronograma from "../Cronograma/Cronograma";
 import * as CronogramaServicio from "../Cronograma/CronogramaServicio";
 import { ModalFormCronograma } from "../modals/ModalFormCronograma";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCalendarDays } from '@fortawesome/free-solid-svg-icons'
+
 
 
 const Offcanvascronograma = () =>{
@@ -41,9 +44,9 @@ const Offcanvascronograma = () =>{
             onClick={cronogramacaShow}
             className="mb-1 border-r "
           >
-            <span className="lbl-cronograma"></span>
+           <FontAwesomeIcon icon={faCalendarDays}></FontAwesomeIcon>
           </Button>
-    <Offcanvas show={offcanvascronograma} onHide={cronogramaClose}>
+    <Offcanvas show={offcanvascronograma} onHide={cronogramaClose} className={'text-dark'}>
         <Offcanvas.Header closeButton>
           <Offcanvas.Title></Offcanvas.Title>
           <ModalFormCronograma

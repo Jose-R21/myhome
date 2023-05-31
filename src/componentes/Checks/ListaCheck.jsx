@@ -3,6 +3,8 @@ import React from "react";
 import * as CheckServicio from "./CheckServicio";
 import ItemCheck from "./ItemCheck";
 import { ModalFormCheck } from "../modals/ModalFormCheck";
+import { Link } from "react-router-dom";
+import './ListaCheck.css'
 
 const ListaCheks = () => {
   const [checks, setChecks] = useState([]);
@@ -29,10 +31,19 @@ const ListaCheks = () => {
 
   return (
     <>
-    <div className="w-100 border border-dark rounded shadow p-4">
-      <div className="mb-3 mt-3 text-center">
-        <span className="h3">Lista de cheks</span>
+    <div className="mb-1 cont-lcheck bg-dark-p">
+      <div className="top-bar1 pb-2 ps-4 pt-4">
+        <div className="d-flex">
+          <Link to={'/myhome/'} className="link-map text-light hover-text-orange">Home</Link> 
+          <i class="bi bi-chevron-compact-right"></i>
+
+        </div>
+        <div className="mt-3 text-orange">
+        <span className="h2">Lista de cheks</span>
       </div>
+      </div>
+    <div className="w-100 border border-dark shadow p-4 bg-light h-100">
+      
       <div className="accordion w-100" id="accordionExample">
         <div className="accordion-item">
           <h2 className="accordion-header" id="headingOne">
@@ -128,6 +139,7 @@ const ListaCheks = () => {
           </div>
         </div>
       </div>
+    </div>
     </div>
     </>
   );

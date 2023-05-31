@@ -4,8 +4,18 @@ import C_azul from "../../assets/camisas/c-azul.png";
 import C_negro from "../../assets/camisas/c-negro.png";
 import { useState } from "react";
 import Button from "react-bootstrap/Button";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fab } from '@fortawesome/free-brands-svg-icons'
+import { faCheckSquare, faCoffee, faTShirt } from '@fortawesome/free-solid-svg-icons'
+
+  
+
+
+
 
 export const OffcanvasUniforme = () => {
+  library.add(fab, faCheckSquare, faCoffee, faTShirt)
   const [offcanvasuniforme, setOffcanvasUniforme] = useState(false);
 
   const uniformeClose = () => setOffcanvasUniforme(false);
@@ -61,9 +71,9 @@ export const OffcanvasUniforme = () => {
         onClick={uniformeShow}
         className="mb-1 border-r "
       >
-        <span className="lbl-uniforme"></span>
+       <FontAwesomeIcon icon={faTShirt} />
       </Button>
-      <Offcanvas show={offcanvasuniforme} onHide={uniformeClose}>
+      <Offcanvas show={offcanvasuniforme} onHide={uniformeClose} className={'text-dark'}>
         <Offcanvas.Header closeButton>
           <Offcanvas.Title>
             <span className="text-center">Calendario de Uniforme</span>

@@ -5,19 +5,24 @@
   display: grid;
 }
 .border-r{
-  border-radius: 0px;
+  border-radius: 5px 0px 0px 5px!important;
+  
+
 }
 
 .lbl-nota::before{
   content: "Notas";
+  font-size: 14px;
 
 }
 
 .lbl-cronograma:before{
   content: "Cronograma";
+  font-size: 14px;
 }
 .lbl-uniforme:before{
   content: "Uniforme";
+  font-size: 14px;
 }
 .offcanvas-body{
   background-image: url('../../assets/bg-amarillo.jpg');

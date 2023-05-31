@@ -6,6 +6,7 @@ import ListaNotas from "../Notas/ListaNotas";
 import * as NotaServicio from "../Notas/NotaServicio";
 import { ModalFormNota } from "../modals/ModalformNota";
 
+
 const OffcanvasNotas = () => {
   const [show, setShow] = useState(false);
 
@@ -38,10 +39,10 @@ const OffcanvasNotas = () => {
         onClick={handleShow}
         className="mb-1 border-r"
       >
-        <span className="lbl-nota"></span>
+        <i className="bi bi-card-list"></i>
       </Button>
 
-      <Offcanvas show={show} onHide={handleClose}>
+      <Offcanvas show={show} onHide={handleClose} className={'text-dark'}>
         <Offcanvas.Header closeButton>
           <Offcanvas.Title></Offcanvas.Title>
           <ModalFormNota cargarNotas={cargarNotas}></ModalFormNota>

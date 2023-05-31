@@ -10,7 +10,18 @@
   height: auto;
   width: auto;
 }
+.nav-bg{
+  background-image: -moz-linear-gradient( 90deg, rgb(86,87,90) 0%, rgb(41,42,52) 100%);
+  background-image: -webkit-linear-gradient( 90deg, rgb(86,87,90) 0%, rgb(41,42,52) 100%);
+  background-image: -ms-linear-gradient( 90deg, rgb(86,87,90) 0%, rgb(41,42,52) 100%);
+}
+.nav-bg span{
+  color: white;
+}
 
+.navbar-brand{
+  color: white!important;
+}
 .img-prof{
   width: 2.5rem;
   height: 2.5rem;
@@ -32,7 +43,7 @@
 }
 .dr-login{
   width: 250px;
-  border: 1px solid black!important;
+  border: 1px solid;
  
 }
 .nav-item-login{
@@ -41,18 +52,40 @@
 .nav-mob-login{
   display: flex;
 }
+.nav-per{
+  padding: 50px 40px 0px 5px!important;
+
+  position: fixed!important;
+  margin-top: -45px!important;
+  
+  width: 83.5%!important;
+  z-index: 999!important;
+  box-shadow: -2px 2px 7px rgba(0,0,0,.5)!important;
+  z-index: 99!important;
+  border-bottom: 2px solid #ff4000!important;
+  
+}
 .chat{
   background-color: #3cb361!important;
+  color: black!important;
+}
+.chat:hover{
+  color: white!important;
 }
 @media (max-width: 600px){
   .nav-mob{
       width: 75%!important;
       display: flex;
   }
-  
+  .nav-per{
+    width: 95%!important;
+    padding: 50px 0px 10px 5px!important;
+
+  }
   .nav-item-login{
     display: flex!important;
   }
+  
   .nav-mob-login{
     display: none;
   }

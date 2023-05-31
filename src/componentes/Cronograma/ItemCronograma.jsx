@@ -66,25 +66,34 @@ const ItemCronograma = ({
 
     }
 
+  }
 
-
-    
+  const navigateUpdate = async (id) => {
+    await navigate(
+      `/myhome/update/cronograma/${id}`,
+      
+    );
+    closeoffcanvas()
   }
 
   return (
     <div className="nota shadow">
       <div className="contenido-nota">
         <div className={`cr p-1 ${estado} rounded`}>
-          <label>
-          <b style={{ color: "red" }}>* </b>{" "}
-          <span className="text-uppercase">{cronograma.descripcion + "."}</span>
+          <div className="w-100">
+          <label >
+          <span style={{ color: "red" }}>*</span>
+          
+          <span className="text-uppercase">{cronograma.descripcion + "."}</span> </label>
+          
           <br />
-          </label>
+          </div>
+          <div>
           <label className={`text-capitalize`}>
             Estado :{" "}
-            <span className={`${estado == "cerrado" ? "text-danger" : estado == "activo"? "text-success" : "text-warning" }`}>
+            <label className={`${estado == "cerrado" ? "text-danger" : estado == "activo"? "text-success" : "text-warning" }`}>
               {estado}
-            </span>
+            </label>
           </label>
           <br />
           <label
@@ -118,6 +127,7 @@ const ItemCronograma = ({
           >
             {"Fecha de Fin: " + fechaFinDia + "-" + fechaFinMes}
           </label>
+          </div>
         </div>
       </div>
       <div className="cont-btn">
@@ -126,12 +136,7 @@ const ItemCronograma = ({
             type="button"
             className="btn "
             style={{ display: "contents" }}
-            onClick={async () => {
-              await navigate(
-                `/myhome/update/cronograma/${cronograma._id}`,
-                closeoffcanvas()
-              );
-            }}
+            onClick={()=>navigateUpdate(cronograma._id)}
           >
             <i className="bi bi-three-dots"></i>
           </button>

@@ -6,15 +6,17 @@ import Cookie from "universal-cookie";
 import './Chat.css'
 import online from '../../assets/online.png'
 import offline from '../../assets/offline.png'
-import Login from "../login/Login";
+import luna from '../../assets/luna.png'
+import luna2 from '../../assets/luna2.png'
+import sol from '../../assets/sol.png'
+import sol2 from '../../assets/sol2.png'
+
 const cookie = new Cookie();
 
-const socket = io("http://localhost:3000", {autoConnect: false, query:{
-  userID: cookie.get("id")
-}});
 
 
-const Chat = () => {
+
+const Chat = ({socket}) => {
 
  
   
@@ -130,27 +132,35 @@ const Chat = () => {
     return (
       <>
       
-  
-      <div className="w-100 d-flex">
-      <div className="w-25 border-end border-dark p-2 cont-users">
+      
+      <div className="bg-chat w-100 pt-4 d-flex ">
+      <div className="w-25 border-end border-dark p-2 cont-users text-white ">
       <div className="w-75 pt-4 d-flex justify-content-center mx-auto ">
       
         </div>
         
            {users.map((user, index)=>{
-            return(
-              <div key={index} className="ps-1 pb-2 div-users h-auto rounded">
-  
-                <div><span>{user.userName}</span> <span>({user.status}) <img src={user.status == 'online' ? online: offline} style={{height: '10px', width: 'auto'}} /> </span></div>
-              
-              
-            </div>
-            )
+
+            if(user.id == 'undefined'){
+              return(<></>)
+            }
+            else{
+              return(
+                <div key={index} className="ps-1 pb-2 div-users h-auto rounded ">
+    
+                  <div><span>{user.userName}</span> <span>({user.status}) <img src={user.status == 'online' ? online: offline} style={{height: '10px', width: 'auto'}} /> </span></div>
+                
+                
+              </div>
+              )
+
+            }
+            
             
            })}
       </div>
         
-        <div className=" w-100 d-flex justify-content-center align-items-center cont-body">
+        <div className=" w-100 d-flex ms-5  align-items-center cont-body">
           <div className="d-flex justify-content-center h-cont-s w-75">
             <div className="w-100  border border-dark rounded">
               <div className="w-100 p-3 mb-1 border-bottom border-dark rounded h-cont-g overflow-auto">
@@ -162,12 +172,29 @@ const Chat = () => {
                   return (
                     <div key={index} className="d-flex ">
                       <div
-                        className={`mt-2 p-2 text-sm rounded span-chat  ${
-                          msg.usuario == "Yo" ? "ms-auto bg-yo" : "bg-info"
+                        className={`mt-3  text-sm dob-s  span-chat  ${
+                          msg.usuario == "Yo" ? "ms-auto bg-yo pe-2" : "bg-others ps-3"
                         }`}
-                      >
-                        <span className="fw-bold ">{msg.usuario}: </span>
+                      > 
+                      
+                      <div className={`d-flex dob-s pb-2 pt-2  h-100  align-items-center  ${
+                          msg.usuario == "Yo" ? "bg-img-me " : "bg-img-others"
+                        }`}>
+                          <div className="d-flex h-100 align-items-top">
+                        {msg.usuario == 'Yo'? ( <img src={luna} alt="" className="img-chat-me me-2" />) :<></>}
+                        </div>
+                        <div className={`w-100 chat-msg align-items-center ${msg.mensaje.length < 50 ? 'd-flex' : <></> }`} id="bgfas">
+                       <div className="d-flex align-items-center ">
+                          <span className="fw-bold my-auto">{msg.usuario}: &nbsp; </span>
+                          </div>
+                        
                         <span className="">{msg.mensaje}</span>
+
+                       
+                        </div>
+                        {msg.usuario == 'Yo'? <></> : ( <img src={luna2} alt="" className="img-chat-others " />)}
+                      </div>
+                      
                       </div>
                     </div>
                     
@@ -179,7 +206,7 @@ const Chat = () => {
                 
               </div>
               </div>
-                <div className="text-secondary pb-2 ps-2 border-bottom border-dark" id="span-x">
+                <div className="pb-2 ps-2 border-bottom border-dark" id="span-x">
   
                 </div>
               <div className="d-flex justify-content-center align-items-center p-2" id="cont-input">

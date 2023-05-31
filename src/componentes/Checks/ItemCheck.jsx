@@ -40,7 +40,7 @@ const ItemCheck = ({ descripcion, id, cargarCheck, tipo, pos }) => {
         <div className="form-check d-flex justify-content-between align-items-center w-100" >
           <div className="w-100 align-items-center rounded p-1" id={`${tipo}-${pos}`} >
             <input
-              className="form-check-input me-1"
+              className="form-check-input me-1 d-none"
               type="checkbox"
               value=""
               id={`check-${tipo}-${pos}`} onChange={success_check}

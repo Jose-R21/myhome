@@ -3,3 +3,12 @@
   min-width: 15vw;
   max-width: 15vw;
 }
+.cnt-lat{
+  width: 15%;
+  min-height: 100%;
+
+  background: #0b924f;  /* fallback for old browsers */
+
+
+  
+}

@@ -1,8 +1,16 @@
 .cnt{
   height: 100%;
   min-height: 100vh;
-  background-color: #fff;
+ 
+
+  width: 100%;
+  margin: auto;
+  
 }
+.cont-g{
+  margin-top: 4%;
+}
+
 @media (max-width: 575px)
 {
   .container{
